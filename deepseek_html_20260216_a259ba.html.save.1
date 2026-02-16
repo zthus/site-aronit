@@ -1,0 +1,574 @@
+w<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AronIT - Gestão ERP</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      color: #1e2b3c;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0b1e33 0%, #123456 100%);
+      color: white;
+      padding: 24px 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* ESTILO DO SEU LOGOTIPO */
+    .logo-img {
+      height: 60px;
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+    }
+
+    .company-name h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .company-name p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .header-contact {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .header-contact span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      padding: 10px 18px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .hero-tagline {
+      background: white;
+      padding: 20px 0;
+      border-bottom: 1px solid #dde3ed;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .hero-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #eef3fa;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #0b2a41;
+    }
+
+    .hero-item i {
+      font-size: 1.5rem;
+      color: #0066cc;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin: 50px 0 30px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 90px;
+      height: 4px;
+      background: #1e5ea8;
+      border-radius: 6px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 30px -8px rgba(0,35,70,0.15);
+      transition: 0.2s ease;
+      border: 1px solid rgba(0,80,160,0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 38px -10px #0b2e4e30;
+    }
+
+    .card-icon {
+      font-size: 2.8rem;
+      color: #1360b0;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #0b2a41;
+    }
+
+    .card ul {
+      list-style: none;
+    }
+
+    .card li {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1.05rem;
+    }
+
+    .card li i {
+      color: #1f8b4c;
+      width: 22px;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .badge {
+      background: #e7f0ff;
+      color: #024b9e;
+      padding: 4px 14px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .highlight-cert {
+      background: linear-gradient(115deg, #e6f0ff 0%, #ffffff 80%);
+      border-radius: 48px;
+      padding: 48px 40px;
+      margin: 60px 0;
+      border: 1px solid #b9d5ff;
+      box-shadow: 0 15px 20px -10px #a0c0e8;
+    }
+
+    .cert-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .cert-text {
+      flex: 2 1 300px;
+    }
+
+    .cert-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #00337c;
+      margin-bottom: 20px;
+    }
+
+    .cert-text p {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #1e3b5a;
+    }
+
+    .cert-feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 35px;
+      margin-top: 20px;
+    }
+
+    .cert-feature-list div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    .cert-feature-list i {
+      color: #006b3e;
+      font-size: 1.6rem;
+    }
+
+    .cert-cta {
+      background: #002a5c;
+      color: white;
+      padding: 18px 42px;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 8px 0 #01132b;
+      transition: 0.1s linear;
+      border: none;
+      cursor: default;
+    }
+
+    .support-section {
+      background: #13293f;
+      color: white;
+      border-radius: 48px;
+      padding: 50px 40px;
+      margin: 60px 0;
+      background-image: radial-gradient(circle at 80% 30%, #1e4b77 0%, #0b253b 100%);
+    }
+
+    .support-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .support-info {
+      flex: 2 1 300px;
+    }
+
+    .support-info h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .support-info .highlight {
+      color: #ffdb8e;
+    }
+
+    .support-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .support-item {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      padding: 18px 20px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .support-item i {
+      font-size: 2rem;
+      color: #9fc9ff;
+      margin-bottom: 10px;
+    }
+
+    .support-item h4 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .support-item p {
+      opacity: 0.9;
+    }
+
+    .support-badge {
+      background: #ffc107;
+      color: #1e2f40;
+      border-radius: 40px;
+      padding: 8px 25px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    .footer {
+      background: #0b1a2b;
+      color: #ccdbe9;
+      padding: 40px 0;
+      border-radius: 40px 40px 0 0;
+      margin-top: 70px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .footer-contact i {
+      color: #6cb3ff;
+      margin-right: 8px;
+    }
+
+    .footer-contact span {
+      margin-right: 25px;
+      font-size: 1.1rem;
+    }
+
+    .footer-copy {
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 700px) {
+      .section-title { font-size: 1.9rem; }
+      .cert-text h2 { font-size: 2rem; }
+      .support-info h2 { font-size: 2rem; }
+      .cert-cta { font-size: 1.2rem; padding: 15px 25px; }
+      .header-content { flex-direction: column; align-items: start; }
+      .logo-img {
+        height: 40px;  /* Logo menor em celulares */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-content">
+    <div class="logo-area">
+      <!-- SEU LOGOTIPO AQUI -->
+            <div class="company-name">
+        <h1>Aron-IT</h1>
+        <p><i class="fas fa-certificate"></i> certificado digital · suporte total</p>
+      </div>
+    </div>
+    <div class="header-contact">
+      <span><i class="fas fa-headset"></i> Suporte 24h</span>
+      <span><i class="fas fa-shield-alt"></i> SEFAZ integrada</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero-tagline">
+  <div class="container hero-grid">
+    <div class="hero-item"><i class="fas fa-calculator"></i> Financeiro</div>
+    <div class="hero-item"><i class="fas fa-boxes"></i> Estoque</div>
+    <div class="hero-item"><i class="fas fa-file-invoice"></i> NF-e / NFC-e / CT-e / MDF-e</div>
+    <div class="hero-item"><i class="fas fa-camera"></i> CFTV</div>
+    <div class="hero-item"><i class="fas fa-wifi"></i> Redes</div>
+  </div>
+</div>
+
+<main class="container">
+  <h2 class="section-title">ERP completo · gestão sem fronteiras</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Financeiro</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Contas a pagar/receber</li>
+        <li><i class="fas fa-check-circle"></i> Fluxo de caixa e conciliação</li>
+        <li><i class="fas fa-check-circle"></i> Boletos e recebíveis</li>
+        <li><i class="fas fa-check-circle"></i> Relatórios gerenciais</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-cubes"></i></div>
+      <h3>Estoque</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Controle multi-depósito</li>
+        <li><i class="fas fa-check-circle"></i> Inventário e curva ABC</li>
+        <li><i class="fas fa-check-circle"></i> Lotes e validade</li>
+        <li><i class="fas fa-check-circle"></i> Integração com vendas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+      <h3>Emissão fiscal (SEFAZ)</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> NF-e, NFC-e, CT-e, MDF-e</li>
+        <li><i class="fas fa-check-circle"></i> Transmissão automática</li>
+        <li><i class="fas fa-check-circle"></i> Manifesto e contingência</li>
+        <li><i class="fas fa-check-circle"></i> Validação SEFAZ em tempo real</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: #e4edf7; border-radius: 48px; padding: 40px 30px; margin: 50px 0;">
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+      <div style="flex: 1 1 200px; text-align: center;">
+        <i class="fas fa-utensils" style="font-size: 5rem; color: #cc6b2c;"></i>
+        <i class="fas fa-cash-register" style="font-size: 4rem; margin-left: 15px; color: #2b6190;"></i>
+      </div>
+      <div style="flex: 4 1 400px;">
+        <h3 style="font-size: 2rem; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+          <span style="background: #002856; color: white; padding: 8px 20px; border-radius: 40px;">Varejo</span>
+          <span style="background: #cc5f2a; color: white; padding: 8px 20px; border-radius: 40px;">Alimentação</span>
+        </h3>
+        <p style="font-size: 1.4rem; font-weight: 500;">PDV ultra rápido e cardápio digital intuitivo para vendas aceleradas.</p>
+        <div style="display: flex; gap: 25px; flex-wrap: wrap; margin-top: 25px;">
+          <span><i class="fas fa-circle-check" style="color:#1f8b4c;"></i> Toques rápidos</span>
+          <span><i class="fas fa-circle-check" style="color:#1f8b4c;"></i> Delivery integrado</span>
+          <span><i class="fas fa-circle-check" style="color:#1f8b4c;"></i> Mesa e comandas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Infraestrutura completa</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <i class="fas fa-video card-icon"></i>
+      <h3>CFTV & segurança</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Câmeras IP / HD</li>
+        <li><i class="fas fa-check-circle"></i> Armazenamento em nuvem</li>
+        <li><i class="fas fa-check-circle"></i> Monitoramento remoto</li>
+        <li><i class="fas fa-check-circle"></i> Controle de acesso</li>
+      </ul>
+    </div>
+    <div class="card">
+      <i class="fas fa-network-wired card-icon"></i>
+      <h3>Redes e conectividade</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Cabeamento estruturado</li>
+        <li><i class="fas fa-check-circle"></i> Wi-Fi empresarial</li>
+        <li><i class="fas fa-check-circle"></i> Firewall / VPN</li>
+        <li><i class="fas fa-check-circle"></i> Servidores e storage</li>
+      </ul>
+    </div>
+    <div class="card">
+      <i class="fas fa-computer card-icon"></i>
+      <h3>Suporte técnico</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Limpeza e formatação</li>
+        <li><i class="fas fa-check-circle"></i> Manutenção preventiva</li>
+        <li><i class="fas fa-check-circle"></i> Remoto e presencial</li>
+        <li><i class="fas fa-check-circle"></i> Backup e recuperação</li>
+      </ul>
+      <div style="margin-top: 20px;"><span class="badge">especialistas em TI</span></div>
+    </div>
+  </div>
+
+  <div class="highlight-cert">
+    <div class="cert-content">
+      <div class="cert-text">
+        <h2><i class="fas fa-certificate"></i> Certificado digital</h2>
+        <p><strong>Praticidade total · tudo em um só lugar</strong></p>
+        <div class="cert-feature-list">
+          <div><i class="fas fa-check-circle"></i> A1 / A3 na hora</div>
+          <div><i class="fas fa-check-circle"></i> Validação SEFAZ</div>
+          <div><i class="fas fa-check-circle"></i> Assinatura de NF-e</div>
+          <div><i class="fas fa-check-circle"></i> Renovação simplificada</div>
+        </div>
+        <p style="margin-top: 30px; font-size: 1.2rem;">Integração completa com ERP e órgãos fiscalizadores.</p>
+      </div>
+      <div class="cert-cta">
+        <i class="fas fa-shield"></i> 100% válido
+      </div>
+    </div>
+  </div>
+
+  <div class="support-section">
+    <div class="support-grid">
+      <div class="support-info">
+        <h2>Suporte <span class="highlight">especializado</span></h2>
+        <p style="font-size: 1.3rem; margin-bottom: 20px;">Equipe técnica pronta para resolver, presencial ou remoto.</p>
+        <div class="support-items">
+          <div class="support-item">
+            <i class="fas fa-broom"></i>
+            <h4>Limpeza técnica</h4>
+            <p>Remoção de poeira, otimização e troca de pasta térmica.</p>
+          </div>
+          <div class="support-item">
+            <i class="fas fa-window-restore"></i>
+            <h4>Formatação</h4>
+            <p>Windows, Linux, backups e reinstalação de drivers.</p>
+          </div>
+          <div class="support-item">
+            <i class="fas fa-tools"></i>
+            <h4>Hardware</h4>
+            <p>Reparos, upgrades e diagnóstico avançado.</p>
+          </div>
+          <div class="support-item">
+            <i class="fas fa-shield-halttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.cssed"></i>
+            <h4>Segurança</h4>
+            <p>Remoção de vírus e proteção de dados.</p>
+          </div>
+        </div>
+        <div class="support-badge">
+          <i class="fas fa-headset"></i> Atendimento 24/7
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-contact">
+           <span><i class="fab fa-whatsapp"></i> (12) 99737-1624</span>
+      <span><i class="fas fa-envelope"></i> contato@aronit.com.br</span>
+    </div>
+    <div class="footer-copy">
+      <i class="fas fa-certificate"></i> certificado digital · gestão erp · infraestrutura
+      <p style="margin-top: 8px;">© 2025 AronIT – Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<div style="position: fixed; bottom: 20px; right: 20px; background: #0a2c4b; color: white; border-radius: 80px; padding: 12px 25px; font-weight: 600; box-shadow: 0 6px 12px black; z-index: 99;">
+  <i class="fas fa-certificate"></i> Ative seu certificado
+</div>
+
+</body>
+</html>
